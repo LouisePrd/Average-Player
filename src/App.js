@@ -1,25 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import { useData } from "./services/Data";
+import { Champion } from "./components/Champion";
+import "./App.css";
 
 function App() {
+  const { data, error, loading } = useData();
+  console.log(data ? data.name : "No data yet");
+
+  if (loading) {
+    return <div className="App">Loading...</div>;
+  }
+  if (error) {
+    return <div className="App">Error: {error.message}</div>;
+  }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Average player</h1>
+      {data ? (
+        <Champion champion={data} />
+      ) : (
+        <p>No data available</p>
+      )}
     </div>
   );
+  
 }
 
 export default App;
