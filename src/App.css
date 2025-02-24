@@ -13,7 +13,9 @@ h1 {
   font-family: "beaufort-pro", sans-serif;
   font-weight: 700;
   font-style: normal;
-  font-size: 3rem;
-  color: #F0E6D2;
-  margin-top: 2rem;
+  font-size: 3.5rem;
+  color: #C89B3C;
+  margin-top: 1rem;
+  margin-bottom: 3rem;
+  text-transform: uppercase;
 }
