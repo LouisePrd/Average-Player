@@ -1,13 +1,10 @@
 import React from "react";
 import { Connect } from "../components/Connect";
-import { Navbar } from "../components/Navbar";
 import "../assets/styles/home.css";
 
 export function Home() {
   return (
-    <div>
-      <Navbar activeItem="home" />
-      <h1>Average player</h1>
+    <div className="home">
       <div className="concept">
         <div className="concept-intro">
           <p>
