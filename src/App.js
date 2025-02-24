@@ -1,11 +1,21 @@
 import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router";
+import { Navbar } from "./components/Navbar";
+import { Champions } from "./pages/Champions";
 import { Home } from "./pages/Home";
 import "./App.css";
 
-export default function App() {
+function App() {
   return (
-    <div className="App">
-      <Home />
-    </div>
+    <Router>
+      <Navbar/>
+      <h1>Average player</h1>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/champions" element={<Champions />} />
+      </Routes>
+    </Router>
   );
 }
+
+export default App;

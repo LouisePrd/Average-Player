@@ -12,9 +12,9 @@ export function Home() {
             learning strategies on League of Legends.
           </p>
           <p>
-            After all that time, do you think you know everything there is to
-            know about the game universe? Test yourself : enter the Summoner's
-            Rift and see if you can answer all the questions !
+            After all this time, do you think you know everything there is to
+            know about the game's universe? Test yourself: enter the Summoner's
+            Rift and see if you can answer all these questions!
           </p>
         </div>
         <Connect />

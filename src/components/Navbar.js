@@ -2,6 +2,7 @@ import React from "react";
 import { Link, useLocation } from "react-router";
 import "../assets/styles/navbar.css";
 import logo from "../assets/images/logo.png";
+import user from "../assets/images/user.png";
 
 export function Navbar() {
   const location = useLocation();
@@ -21,8 +22,18 @@ export function Navbar() {
         <li className={location.pathname === "/scoreboard" ? "active" : ""}>
           <Link to="/scoreboard">Scoreboard</Link>
         </li>
+        <li className={location.pathname === "/profile" ? "active" : ""}>
+          <Link to="/profile">
+            <img id="user" src={user} alt="user" />
+          </Link>
+        </li>
       </ul>
-      <img id="logo" src={logo} alt="logo" onClick={() => (window.location = "/")} />
+      <img
+        id="logo"
+        src={logo}
+        alt="logo"
+        onClick={() => (window.location = "/")}
+      />
     </nav>
   );
 }

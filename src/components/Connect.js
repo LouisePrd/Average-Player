@@ -1,6 +1,10 @@
 
 function connected () {
-  console.log("connected");
+    const pseudo = document.querySelector('input').value;
+    if (pseudo) {
+        localStorage.setItem('pseudo', pseudo);
+        window.location.reload();
+    }
 }
 
 export function Connect() {
