@@ -20,7 +20,7 @@ export function Navbar() {
           <Link to="/game">Games</Link>
         </li>
         <li className={location.pathname === "/scoreboard" ? "active" : ""}>
-          <Link to="/scoreboard">Scoreboard</Link>
+          <Link to="/scores">Scoreboard</Link>
         </li>
         <li className={location.pathname === "/profile" ? "active" : ""}>
           <Link to="/profile">
@@ -28,12 +28,15 @@ export function Navbar() {
           </Link>
         </li>
       </ul>
+      <div className="logos">
       <img
         id="logo"
         src={logo}
         alt="logo"
         onClick={() => (window.location = "/")}
       />
+      <p>AveragePlayer.gg</p>
+      </div>
     </nav>
   );
 }
