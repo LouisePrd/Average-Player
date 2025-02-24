@@ -1,0 +1,30 @@
+
+
+.allChampions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-top: 20px;
+  overflow: auto;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.cardChampion {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 230px;
+  height: 290px;
+  margin: 20px;
+  border-radius: 10px;
+  background-color: #f5f5f5;
+  transition: 0.3s;
+  box-shadow: 0 0 10px rgba(200, 155, 60, 0.8);
+}
+
+.cardChampion:hover {
+  transform: scale(1.1);
+}

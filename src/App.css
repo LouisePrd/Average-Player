@@ -1,6 +1,6 @@
 @import url("https://use.typekit.net/nde5hla.css");
 
-.App {
+#root {
   text-align: center;
   background-color: #010A13;
   color: #F0E6D2;
@@ -15,7 +15,28 @@ h1 {
   font-style: normal;
   font-size: 3.5rem;
   color: #C89B3C;
-  margin-top: 1rem;
-  margin-bottom: 3rem;
+  margin-top: 0.5rem;
+  margin-bottom: 2rem;
   text-transform: uppercase;
 }
+
+h2 {
+  font-family: "beaufort-pro", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 1.8rem;
+  margin: 0.5rem;
+  color: #C89B3C;
+  text-transform: uppercase;
+}
+
+h3 {
+  font-family: "beaufort-pro", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 1rem;
+  color: #C89B3C;
+  text-transform: capitalize;
+  margin: auto;
+}
+
