@@ -13,6 +13,7 @@ nav {
 nav ul {
     display: flex;
     list-style: none;
+    align-items: center;
 }
 
 nav ul li {
@@ -42,8 +43,17 @@ nav ul li a {
     height: 50px;
     margin: 0;
     transition: transform 0.3s ease-in-out;
+    cursor: pointer;
 }
 
 #logo:hover {
     transform: scale(1.1);
+}
+
+#user {
+    width: 30px;
+    height: auto;
+    margin: 0;
+    transition: transform 0.3s ease-in-out;
+    cursor: pointer;
 }
