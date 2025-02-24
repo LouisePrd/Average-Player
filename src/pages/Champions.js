@@ -13,10 +13,13 @@ export function Champions() {
   }
 
   return (
-    <div className="allChampions">
+    <div className="champions">
+      <h1>All Champions</h1>
+      <div className="allChampions">
         {allChampions.map((champion) => (
-            <Champion key={champion.name} champion={champion} />
+          <Champion key={champion.name} champion={champion} />
         ))}
+      </div>
     </div>
   );
 }
