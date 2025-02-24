@@ -15,22 +15,28 @@ function getRandomChampion(champions) {
   };
 }
 
+function getAllChampions(champions) {
+  if (!champions || !champions.length) {
+    return null;
+  }
+  return champions.map((champion) => ({
+    name: champion.name,
+    title: champion.title,
+    img: `https://ddragon.leagueoflegends.com/cdn/15.4.1/img/champion/${champion.image.full}`,
+  }));
+}
 
 export const useData = () => {
-  const [datas, setData] = useState([]);
+  const [champions, setChampions] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const url = 'https://ddragon.leagueoflegends.com/cdn/15.4.1/data/en_US/champion.json';
     const fetchData = async () => {
       try {
-        const response = await fetch(url, {
-          method: "GET",
-          headers: { accept: "application/json" },
-        });
+        const response = await fetch('https://ddragon.leagueoflegends.com/cdn/15.4.1/data/en_US/champion.json');
         const json = await response.json();
-        setData(Object.values(json.data || {})); 
+        setChampions(Object.values(json.data || {}));
       } catch (error) {
         setError(error);
       } finally {
@@ -40,7 +46,10 @@ export const useData = () => {
     fetchData();
   }, []);
 
-  const data = datas.length > 0 ? getRandomChampion(datas) : null;
-
-  return { data, error, loading };
+  return { 
+    randomChampion: champions.length > 0 ? getRandomChampion(champions) : null,
+    allChampions: champions.length > 0 ? getAllChampions(champions) : [],
+    error, 
+    loading 
+  };
 };
