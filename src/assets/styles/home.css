@@ -15,7 +15,11 @@
 
 .concept-intro {
     font-size: 1.5rem;
-    margin: 1rem;
+}
+
+.concept-intro p {
+    padding-left: 1rem;
+    padding-right: 1rem;
 }
 
 
@@ -33,9 +37,25 @@
     background-color: #010A13;
     color: #F0E6D2;
     font-size: 1.5rem;
-    padding: 1rem;
-    margin: 1rem;
+    padding-left: 0.8rem;
+    padding-right: 0.8rem;
+    padding-top: 0.3rem;
+    padding-bottom: 0.3rem;
+    margin: 1.5rem;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+}
+
+.register button:hover {
+    background-color: #C89B3C;
+    color: #010A13;
+    transition: 0.3s;
+}
+
+input {
+    font-size: 1rem;
+    padding: 0.4rem;
+    border-radius: 5px;
+    border: 1px solid #010A13;
 }

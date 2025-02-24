@@ -1,4 +1,7 @@
+.champions {
+  overflow: scroll;
 
+}
 
 .allChampions {
   display: flex;
