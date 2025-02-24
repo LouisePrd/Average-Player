@@ -1,0 +1,49 @@
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row-reverse;
+    padding: 1rem 2rem;
+    margin-bottom: 0;
+    font-family: "beaufort-pro", sans-serif;
+    background: linear-gradient(to top, #010A13, #222);
+    font-size: 1.2rem;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+}
+
+nav ul li {
+    transition: color 0.3s ease-in-out, text-decoration 0.3s ease-in-out;
+}
+
+nav ul li:hover {
+    color: #C89B3C;
+    text-decoration: underline;
+    cursor: pointer;
+    text-shadow: 0 0 8px rgba(200, 155, 60, 0.8);
+}
+
+nav ul li.active a {
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #f5f5f5;
+    margin: 0 1rem;
+}
+
+#logo {
+    width: 50px;
+    height: 50px;
+    margin: 0;
+    transition: transform 0.3s ease-in-out;
+}
+
+#logo:hover {
+    transform: scale(1.1);
+}
