@@ -72,3 +72,10 @@ nav ul li a {
     text-transform: uppercase;
     margin: 0;
 }
+
+#pseudo {
+    font-size: 0.9rem;
+    color: #C89B3C;
+    text-transform: uppercase;
+    margin: 0;
+}
