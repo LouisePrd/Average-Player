@@ -1,0 +1,53 @@
+.games {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 0 auto;
+    max-width: 900px;
+}
+
+.guesser, .memory {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 0 auto;
+    background-color: #f5f5f5;
+    width: 45%;
+    border-radius: 5px;
+}
+
+.guesser h2, .memory h2 {
+    font-size: 1.7rem;
+    font-family: "beaufort-pro", sans-serif;
+    min-height: 80px;
+    padding-top: 1rem;
+}
+
+.games h1, .games p {
+    width: 100%;
+}
+
+.games p {
+    color: #010A13;
+    font-family: "beaufort-pro", sans-serif;
+}
+
+button {
+    background-color: #010A13;
+    color: #F0E6D2;
+    font-size: 1.5rem;
+    padding-left: 0.8rem;
+    padding-right: 0.8rem;
+    padding-top: 0.3rem;
+    padding-bottom: 0.3rem;
+    margin: 1.5rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #C89B3C;
+    color: #010A13;
+    transition: 0.3s;
+}
