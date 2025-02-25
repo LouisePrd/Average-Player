@@ -4,6 +4,7 @@ import { Navbar } from "./components/Navbar";
 import { Champions } from "./pages/Champions";
 import { Home } from "./pages/Home";
 import { Scoreboard } from "./pages/Scoreboard";
+import { Games } from "./pages/Games";
 import "./App.css";
 
 function App() {
@@ -14,6 +15,8 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/champions" element={<Champions />} />
         <Route path="/scores" element={<Scoreboard />} />
+        <Route path="/games" element={<Games />} />
+        
       </Routes>
     </Router>
   );
