@@ -4,6 +4,14 @@ import "../assets/styles/navbar.css";
 import logo from "../assets/images/logo.png";
 import user from "../assets/images/user.png";
 
+function isConnected() {
+  if (localStorage.getItem("pseudo")) {
+    return true;
+  }
+  return false;
+}
+
+
 export function Navbar() {
   const location = useLocation();
 
@@ -16,8 +24,8 @@ export function Navbar() {
         <li className={location.pathname === "/champions" ? "active" : ""}>
           <Link to="/champions">Champions</Link>
         </li>
-        <li className={location.pathname === "/game" ? "active" : ""}>
-          <Link to="/game">Games</Link>
+        <li className={location.pathname === "/games" ? "active" : ""}>
+          <Link to="/games">Games</Link>
         </li>
         <li className={location.pathname === "/scoreboard" ? "active" : ""}>
           <Link to="/scores">Scoreboard</Link>
@@ -26,6 +34,13 @@ export function Navbar() {
           <Link to="/profile">
             <img id="user" src={user} alt="user" />
           </Link>
+          {isConnected() ? (
+            <p id="pseudo">{localStorage.getItem("pseudo")}</p>
+          ) : (
+            ""
+          )
+            
+          }
         </li>
       </ul>
       <div className="logos">
