@@ -5,6 +5,7 @@ import { Champions } from "./pages/Champions";
 import { Home } from "./pages/Home";
 import { Scoreboard } from "./pages/Scoreboard";
 import { Games } from "./pages/Games";
+import { Guesser } from "./pages/games/Guesser";
 import "./App.css";
 
 function App() {
@@ -16,7 +17,7 @@ function App() {
         <Route path="/champions" element={<Champions />} />
         <Route path="/scores" element={<Scoreboard />} />
         <Route path="/games" element={<Games />} />
-        
+        <Route path="/games/guesser" element={<Guesser />} />
       </Routes>
     </Router>
   );

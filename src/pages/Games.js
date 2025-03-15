@@ -9,7 +9,7 @@ export function Games() {
       <div className="guesser">
         <h2>Guess the Champion with LeBlanc !</h2>
         <p>Can you guess the champion by their abilities?</p>
-        <button>Play</button>
+        <button onClick={() =>  window.location.href = "/games/guesser"}>Play</button>
       </div>
 
       <div className="memory">
