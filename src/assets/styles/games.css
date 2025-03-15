@@ -21,6 +21,12 @@
     font-family: "beaufort-pro", sans-serif;
     min-height: 80px;
     padding-top: 1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.guesser p, .memory p {
+    color: #010A13;
 }
 
 .games h1, .games p {
@@ -28,8 +34,9 @@
 }
 
 .games p {
-    color: #010A13;
     font-family: "beaufort-pro", sans-serif;
+    font-size: 1.2rem;
+
 }
 
 button {
@@ -40,7 +47,7 @@ button {
     padding-right: 0.8rem;
     padding-top: 0.3rem;
     padding-bottom: 0.3rem;
-    margin: 1.5rem;
+    margin-bottom: 1rem;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -50,4 +57,36 @@ button:hover {
     background-color: #C89B3C;
     color: #010A13;
     transition: 0.3s;
+}
+
+.difficulty {
+    display: column;
+    justify-content: center;
+    margin-top: 1rem;
+    border: 1px solid #C89B3C;
+    border-radius: 5px;
+    padding: 1rem;
+    width: 50%;
+    margin: 0 auto;
+    font-size: 1.2rem;
+}
+
+.name-options button {
+    margin: 0.5rem;
+    border: 1px solid #C89B3C;
+}
+
+.champions img {
+    min-width: 190px;
+    height: auto;
+    border-radius: 10px;
+    margin: 0 auto;
+    margin-bottom: 1rem;
+    transition: transform 0.5s ease, box-shadow 0.3s ease;
+}
+
+.champions img:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    transform: rotate(360deg);
 }
