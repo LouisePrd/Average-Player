@@ -1,5 +1,5 @@
 import React from "react";
-import "../assets/styles/champions.css";
+import "../styles/champions.css";
 
 export function Champion({ champion }) {
     return (
