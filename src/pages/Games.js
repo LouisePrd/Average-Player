@@ -1,4 +1,4 @@
-import "../assets/styles/games.css";
+import "../styles/games.css";
 
 export function Games() {
   return (
@@ -9,13 +9,13 @@ export function Games() {
       <div className="guesser">
         <h2>Guess the Champion with LeBlanc !</h2>
         <p>Can you guess the champion by their abilities?</p>
-        <button onClick={() =>  window.location.href = "/games/guesser"}>Play</button>
+        <button id="btn-games" onClick={() =>  window.location.href = "/games/guesser"}>Play</button>
       </div>
 
       <div className="memory">
         <h2>Memory Game with Ekko !</h2>
         <p>Match the champions to win!</p>
-        <button>Play</button>
+        <button id="btn-games">Play</button>
       </div>
       
 
