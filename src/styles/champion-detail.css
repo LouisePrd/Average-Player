@@ -1,0 +1,42 @@
+.champion-detail {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    width: 70%;
+    margin: auto;
+}
+
+.champion-detail img {
+    width: 125px;
+    height: auto;
+}
+
+.champion-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background-color: #f5f5f5;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(200, 155, 60, 0.8);
+    margin: 20px;
+    color: #010A13;
+    font-family: "beaufort-pro", sans-serif;
+    overflow: scroll;
+}
+
+.champion-info p:first-child {
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+.champion-info p {
+    font-size: 1.2rem;
+    text-align: justify;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}

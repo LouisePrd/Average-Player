@@ -1,0 +1,81 @@
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row-reverse;
+    padding: 1rem 2rem;
+    margin-bottom: 0;
+    font-family: "beaufort-pro", sans-serif;
+    background: linear-gradient(to top, #010A13, #2e2717) !important;
+    font-size: 1.2rem;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    align-items: center;
+}
+
+nav ul li {
+    transition: color 0.3s ease-in-out, text-decoration 0.3s ease-in-out;
+}
+
+nav ul li:hover {
+    color: #C89B3C;
+    text-decoration: underline;
+    cursor: pointer;
+    text-shadow: 0 0 8px rgba(200, 155, 60, 0.8);
+}
+
+nav ul li.active a {
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #f5f5f5;
+    margin: 0 1rem;
+}
+
+#logo {
+    width: 50px;
+    height: 50px;
+    margin: 0;
+    transition: transform 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+#logo:hover {
+    transform: scale(1.1);
+}
+
+#user {
+    width: 30px;
+    height: auto;
+    margin: 0;
+    transition: transform 0.3s ease-in-out;
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+.logos {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    gap : 1rem;
+}
+
+.logos p {
+    font-size: 1.5rem;
+    color: #C89B3C;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+#pseudo {
+    font-size: 0.9rem;
+    color: #C89B3C;
+    text-transform: uppercase;
+    margin: 0;
+}

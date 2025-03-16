@@ -1,0 +1,188 @@
+.games {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 0 auto;
+    max-width: 900px;
+}
+
+.guesser, .memory {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 0 auto;
+    background-color: #f5f5f5;
+    width: 45%;
+    border-radius: 5px;
+}
+
+.guesser h2, .memory h2 {
+    font-size: 1.7rem;
+    font-family: "beaufort-pro", sans-serif;
+    min-height: 80px;
+    padding-top: 1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.guesser p, .memory p {
+    color: #010A13;
+}
+
+.games h1, .games p {
+    width: 100%;
+}
+
+.games p {
+    font-family: "beaufort-pro", sans-serif;
+    font-size: 1.2rem;
+
+}
+
+#btn-games, #btn-difficulty {
+    background-color: #010A13;
+    color: #F0E6D2;
+    font-size: 1.5rem;
+    padding-left: 0.8rem;
+    padding-right: 0.8rem;
+    padding-top: 0.3rem;
+    padding-bottom: 0.3rem;
+    margin-bottom: 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#btn-difficulty {
+    margin: 1rem;
+}
+
+
+
+#btn-games:hover , #btn-difficulty:hover {
+    background-color: #C89B3C;
+    color: #010A13;
+    transition: 0.3s;
+}
+
+.difficulty {
+    position: relative;
+    margin-top: 14rem;
+    border: 1px solid #C89B3C;
+    border-radius: 5px;
+    padding: 1rem;
+    width: 50%;
+    margin-right: auto;
+    margin-left: auto;
+    font-size: 1.2rem;
+    background-color: #F0E6D2;
+}
+
+.difficulty p {
+    font-family: "beaufort-pro", sans-serif;
+    color: #010A13;
+    font-size: 1.5rem;
+}
+
+.name-options {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 1.5rem;
+}
+
+.name-options button {
+    margin: 0.5rem;
+    border: 1px solid #C89B3C;
+    border-radius: 5px;
+    background-color: #010A13;
+    color: #F0E6D2;
+    font-size: 1.2rem;
+    padding-left: 0.8rem;
+    padding-right: 0.8rem;
+    padding-top: 0.3rem;
+    padding-bottom: 0.3rem;
+    cursor: pointer;
+}
+
+.name-options button:hover {
+    background-color: #C89B3C;
+    color: #010A13;
+    transition: 0.3s;
+}
+
+#submit {
+    font-family: "beaufort-pro", sans-serif;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    cursor: pointer;
+    background-color: #C89B3C;
+    color: #010A13;
+    font-size: 1.3rem;
+    padding: 0.5rem 1rem;
+    border: 2px solid #010A13;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+#submit:hover {
+    background-color: #010A13;
+    color: #C89B3C;
+    transform: scale(1.05);
+    box-shadow: 0 0 10px rgba(200, 155, 60, 0.8);
+}
+
+#submit:active {
+    transform: scale(0.95);
+    box-shadow: 0 0 5px rgba(200, 155, 60, 0.6);
+}
+
+
+.champions img {
+    min-width: 190px;
+    height: auto;
+    border-radius: 10px;
+    margin: 0 auto;
+    margin-bottom: 1rem;
+    transition: transform 0.2s ease;
+}
+
+.champions img:hover {
+    transform: rotate(15deg);
+}
+
+#leblanc-img {
+    position: absolute;
+    top: -210px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 160px;
+    max-width: 20vw;
+    height: auto;
+    z-index: 10;
+}
+
+@media screen and (max-width: 768px) {
+    .games {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .guesser, .memory {
+        width: 90%;
+    }
+
+    .difficulty {
+        width: 80%;
+        margin-top: 2rem;
+    }
+
+    .name-options {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #leblanc-img {
+        display: none;
+    }
+}
