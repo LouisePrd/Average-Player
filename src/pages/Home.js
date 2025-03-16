@@ -1,6 +1,6 @@
 import React from "react";
 import { Connect } from "../components/Connect";
-import "../assets/styles/home.css";
+import "../styles/home.css";
 
 function isConnected() {
   if (localStorage.getItem("pseudo")) {
