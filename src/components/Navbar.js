@@ -1,8 +1,6 @@
 import React from "react";
 import { Link, useLocation } from "react-router";
-import "../assets/styles/navbar.css";
-import logo from "../assets/images/logo.png";
-import user from "../assets/images/user.png";
+import "../styles/navbar.css";
 
 function isConnected() {
   if (localStorage.getItem("pseudo")) {
@@ -32,7 +30,7 @@ export function Navbar() {
         </li>
         <li className={location.pathname === "/profile" ? "active" : ""}>
           <Link to="/profile">
-            <img id="user" src={user} alt="user" />
+            <img id="user" src="/assets/user.png" alt="user" />
           </Link>
           {isConnected() ? (
             <p id="pseudo">{localStorage.getItem("pseudo")}</p>
@@ -46,7 +44,7 @@ export function Navbar() {
       <div className="logos">
       <img
         id="logo"
-        src={logo}
+        src="/assets/logo.png"
         alt="logo"
         onClick={() => (window.location = "/")}
       />
