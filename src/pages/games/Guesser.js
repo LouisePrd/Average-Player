@@ -7,10 +7,11 @@ export function Guesser() {
   const [showOptions, setShowOptions] = useState(true);
 
   const getRandomNames = (correctName) => {
-    const shuffled = allChampions.filter(c => c.name !== correctName)
+    const shuffled = allChampions
+      .filter((c) => c.name !== correctName)
       .sort(() => 0.5 - Math.random())
       .slice(0, 2)
-      .map(c => c.name);
+      .map((c) => c.name);
     return [...shuffled, correctName].sort(() => 0.5 - Math.random());
   };
 
@@ -24,10 +25,17 @@ export function Guesser() {
       <h1>Guesser</h1>
       {showOptions ? (
         <div className="difficulty">
-          <p>Choose your difficulty:</p>
-          <button onClick={handleEasyClick}>Easy</button>
-          <button>Medium</button>
-          <button>Hard</button>
+          <img
+            id="leblanc-img"
+            src="/assets/champions/leblanc-2.png"
+            alt="LeBlanc"
+          />
+          <p>Choose your difficulty</p>
+          <button id="btn-difficulty" onClick={handleEasyClick}>
+            Easy
+          </button>
+          <button id="btn-difficulty">Medium</button>
+          <button id="btn-difficulty">Hard</button>
         </div>
       ) : (
         selectedChampion && (
@@ -38,7 +46,7 @@ export function Guesser() {
                 <button key={index}>{name}</button>
               ))}
             </div>
-            <button>Submit</button>
+            <button id="submit">Submit</button>
           </div>
         )
       )}

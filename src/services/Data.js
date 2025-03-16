@@ -11,8 +11,12 @@ function getRandomChampion(champions) {
   return {
     name: champions[randomIndex].name,
     title: champions[randomIndex].title,
-    img: urlImg,
+    img: urlImg
   };
+}
+
+function strUcFirst(str) {
+  return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
 function getAllChampions(champions) {
@@ -21,8 +25,10 @@ function getAllChampions(champions) {
   }
   return champions.map((champion) => ({
     name: champion.name,
-    title: champion.title,
+    title: strUcFirst(champion.title),
     img: `https://ddragon.leagueoflegends.com/cdn/15.4.1/img/champion/${champion.image.full}`,
+    blurb : champion.blurb,
+    tags: champion.tags.join(", ")
   }));
 }
 
