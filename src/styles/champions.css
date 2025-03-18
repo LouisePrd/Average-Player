@@ -1,6 +1,5 @@
 .champions {
   overflow: scroll;
-
 }
 
 .allChampions {
@@ -34,4 +33,24 @@
 
 .cardChampion:hover {
   transform: scale(1.1);
+}
+
+.filter {
+  display: flex;
+  align-items: center;
+  margin-right: 100px;
+  justify-content: end;
+}
+
+label {
+  font-size: 1.rem;
+  font-weight: bold;
+  text-align: right;
+}
+
+select {
+  font-size: 1rem;
+  padding: 0.2rem;
+  border-radius: 5px;
+  border: 1px solid #010A13;
 }

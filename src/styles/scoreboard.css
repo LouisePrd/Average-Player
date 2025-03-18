@@ -1,0 +1,24 @@
+.no-data {
+    font-style: italic;
+}
+
+.no-data button {
+    background-color: #C89B3C;
+    color: #010A13;
+    font-size: 1.5rem;
+    padding-left: 0.8rem;
+    padding-right: 0.8rem;
+    padding-top: 0.3rem;
+    padding-bottom: 0.3rem;
+    margin: 1.5rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.no-data button:hover {
+    background-color: #010A13;
+    border: 2px solid #C89B3C;
+    color: #F0E6D2;
+    transition: 0.3s;
+}
