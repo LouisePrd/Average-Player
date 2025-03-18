@@ -1,0 +1,42 @@
+footer {
+    display: flex;
+    background-color: #232016;
+    color: #fff;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: 100;
+    margin: 0 auto;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+footer p {
+    font-size: 1.2rem;
+    margin-left: 40px;
+}
+
+ul {
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    padding: 0;
+    gap: 20px;
+    font-size: 1.2rem;
+    margin-right: 40px;
+}
+
+
+li {
+    text-decoration: none;
+    list-style: none;
+}
+
+footer img {
+    max-height: 30px;
+    width: auto;
+    margin: 0 auto;
+    cursor: pointer;
+}
