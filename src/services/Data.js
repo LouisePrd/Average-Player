@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 
-
 function getRandomChampion(champions) {
   if (!champions || !champions.length) {
     return null;
@@ -28,8 +27,25 @@ function getAllChampions(champions) {
     title: strUcFirst(champion.title),
     img: `https://ddragon.leagueoflegends.com/cdn/15.4.1/img/champion/${champion.image.full}`,
     blurb : champion.blurb,
-    tags: champion.tags.join(", ")
+    tags: champion.tags
   }));
+}
+
+function getChampionByName(champions, name) {
+  if (!champions || !champions.length) {
+    return null;
+  }
+  const champion = champions.find(champ => champ.name.toLowerCase() === name.toLowerCase());
+  if (!champion) {
+    return null;
+  }
+  return {
+    name: champion.name,
+    title: strUcFirst(champion.title),
+    img: `https://ddragon.leagueoflegends.com/cdn/15.4.1/img/champion/${champion.image.full}`,
+    blurb: champion.blurb,
+    tags: champion.tags
+  };
 }
 
 export const useData = () => {
@@ -55,6 +71,7 @@ export const useData = () => {
   return { 
     randomChampion: champions.length > 0 ? getRandomChampion(champions) : null,
     allChampions: champions.length > 0 ? getAllChampions(champions) : [],
+    championByName: (name) => champions.length > 0 ? getChampionByName(champions, name) : null,
     error, 
     loading 
   };

@@ -5,9 +5,12 @@ import "../styles/champion-detail.css";
 
 export function ChampionDetail() {
   const { name } = useParams();
-  const { allChampions } = useData();
+  const { championByName } = useData();
+  const champion = championByName(name);
 
-  const champion = allChampions.find((champ) => champ.name === name);
+  if (!champion) {
+    return <div>Champion not found</div>;
+  }
 
   if (!champion) {
     return <div>Champion not found</div>;
@@ -15,12 +18,12 @@ export function ChampionDetail() {
 
   return (
     <div className="champion-detail">
-      <p>{champion.name}</p>
+      <h1>{champion.name}</h1>
       <img src={champion.img} alt={champion.name} />
       <div className="champion-info">
         <p>Title : {champion.title}</p>
         <p>{champion.blurb}</p>
-        <p>Tags : {champion.tags}</p>
+        <p>Tags : {champion.tags.join(", ")}</p>
       </div>
     </div>
   );
