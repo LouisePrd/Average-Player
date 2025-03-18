@@ -4,7 +4,7 @@ export function Games() {
   return (
     <div className="games">
       <h1>Games</h1>
-      <p>3 different games, 3 different champions, 3 different outcomes.</p>
+      <p>2 different games, 2 different champions, 2 different outcomes.</p>
 
       <div className="guesser">
         <h2>Guess the Champion with LeBlanc !</h2>
