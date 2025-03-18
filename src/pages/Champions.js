@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import { useData } from "../services/Data";
 import { Champion } from "../components/Champion";
+import { Filter } from "../components/Filter";
 import "../styles/champions.css";
 import { Link } from "react-router";
 
 export function Champions() {
   const { allChampions, loading, error } = useData();
   const [selectedTag, setSelectedTag] = useState("All");
+  const [sortOrder, setSortOrder] = useState("asc");
 
   if (loading) {
     return <div>Loading...</div>;
@@ -22,24 +24,24 @@ export function Champions() {
       ? allChampions
       : allChampions.filter((champ) => champ.tags.includes(selectedTag));
 
+      
+  if (sortOrder === "asc") {
+    filteredChampions.sort((a, b) => a.name.localeCompare(b.name));
+  } else {
+    filteredChampions.sort((a, b) => b.name.localeCompare(a.name));
+  }
+
   return (
     <div className="champions">
       <h1>All Champions</h1>
 
-      <div className="filter">
-        <label htmlFor="tag-filter">Filter by Tag : </label>
-        <select
-          id="tag-filter"
-          value={selectedTag}
-          onChange={(e) => setSelectedTag(e.target.value)}
-        >
-          {tags.map((tag) => (
-            <option key={tag} value={tag}>
-              {tag}
-            </option>
-          ))}
-        </select>
-      </div>
+     <Filter
+        selectedTag={selectedTag}
+        setSelectedTag={setSelectedTag}
+        sortOrder={sortOrder}
+        setSortOrder={setSortOrder}
+        tags={tags}
+      />
 
       <div className="allChampions">
         {filteredChampions.map((champion) => (

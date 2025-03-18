@@ -35,11 +35,12 @@
   transform: scale(1.1);
 }
 
-.filter {
+.filters {
   display: flex;
   align-items: center;
   margin-right: 100px;
   justify-content: end;
+  gap: 15px;
 }
 
 label {
