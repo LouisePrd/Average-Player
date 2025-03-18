@@ -16,6 +16,9 @@ footer {
 footer p {
     font-size: 1.2rem;
     margin-left: 40px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    font-family: "beaufort-pro", sans-serif;
 }
 
 ul {
@@ -26,6 +29,8 @@ ul {
     gap: 20px;
     font-size: 1.2rem;
     margin-right: 40px;
+    margin-top: 8px;
+    margin-bottom: 8px;
 }
 
 
