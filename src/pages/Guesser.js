@@ -4,6 +4,7 @@ import { useData } from "../services/Data";
 export function Guesser() {
   const { randomChampion, allChampions, loading, error } = useData();
   const [selectedChampion, setSelectedChampion] = useState(null);
+  const [nameOptions, setNameOptions] = useState([]);
   const [isCorrect, setIsCorrect] = useState(null);
   const [showOptions, setShowOptions] = useState(true);
   const [streak, setStreak] = useState(0);
@@ -25,6 +26,7 @@ export function Guesser() {
 
   const handleEasyClick = () => {
     setSelectedChampion(randomChampion);
+    setNameOptions(getRandomNames(randomChampion.name));
     setShowOptions(false);
   };
 
@@ -56,9 +58,16 @@ export function Guesser() {
   };
 
   const handleNext = () => {
-    setSelectedChampion(randomChampion);
     setIsCorrect(null);
+    setShowOptions(false);
+    setSelectedChampion(null);
+    
+    setTimeout(() => {
+      setSelectedChampion(randomChampion);
+      setNameOptions(getRandomNames(randomChampion.name));
+    }, 50);
   };
+  
 
   const successRate =
     totalAttempts > 0 ? ((correctAnswers / totalAttempts) * 100).toFixed(1) : 0;
@@ -88,8 +97,8 @@ export function Guesser() {
           </div>
           <img src={selectedChampion.img} alt={selectedChampion.name} />
           <div className="name-options">
-            {getRandomNames(selectedChampion.name).map((name, index) => (
-              <button key={index} onClick={() => checkChampion(name)}>
+            {nameOptions.map((name) => (
+              <button key={name} onClick={() => checkChampion(name)}>
                 {name}
               </button>
             ))}
@@ -105,6 +114,7 @@ export function Guesser() {
           {isCorrect === false && (
             <div className="retry">
               <p>Incorrect !</p>
+              <button onClick={handleNext}>Retry</button>
             </div>
           )}
         </div>
