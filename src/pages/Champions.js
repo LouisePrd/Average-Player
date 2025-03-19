@@ -43,7 +43,7 @@ export function Champions() {
         tags={tags}
       />
 
-      <div className="allChampions">
+      <div className="all-champions">
         {filteredChampions.map((champion) => (
           <Link key={champion.name} to={`/champions/${champion.name}`}>
             <Champion champion={champion} />

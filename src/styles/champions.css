@@ -2,7 +2,7 @@
   overflow: scroll;
 }
 
-.allChampions {
+.all-champions {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -14,11 +14,11 @@
   margin-right: 20px;
 }
 
-.allChampions a {
+.all-champions a {
   text-decoration: none;
 }
 
-.cardChampion {
+.card-champion {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -31,7 +31,7 @@
   box-shadow: 0 0 10px rgba(200, 155, 60, 0.8);
 }
 
-.cardChampion:hover {
+.card-champion:hover {
   transform: scale(1.1);
 }
 

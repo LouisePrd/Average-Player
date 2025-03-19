@@ -3,7 +3,7 @@ import "../styles/champions.css";
 
 export function Champion({ champion }) {
     return (
-        <div className="cardChampion">
+        <div className="card-champion">
             <h2>{champion.name}</h2>
             <h3>{champion.title}</h3>
             <img src={champion.img} alt={champion.name} />
