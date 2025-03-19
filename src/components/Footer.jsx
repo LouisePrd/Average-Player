@@ -7,13 +7,31 @@ export function Footer() {
       <p>© 2025 Average Player</p>
       <ul>
         <li>
-          <img src="/assets/logos/insta.png" alt="Instagram" />
+          <a
+            href="https://www.instagram.com/leagueoflegends/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <img src="/assets/logos/insta.png" alt="Instagram" />
+          </a>
         </li>
         <li>
-          <img src="/assets/logos/x.png" alt="Twitter" />
+          <a
+            href="https://x.com/leagueoflegends"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <img src="/assets/logos/x.png" alt="Twitter" />
+          </a>
         </li>
         <li>
-          <img src="/assets/logos/twitch.png" alt="Twitch" />
+          <a
+            href="https://www.twitch.tv/directory/category/league-of-legends?lang=fr"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <img src="/assets/logos/twitch.png" alt="Twitch" />
+          </a>
         </li>
       </ul>
     </footer>
