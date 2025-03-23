@@ -8,6 +8,7 @@ export function ScoreTable({ players }) {
                 <tr>
                     <th>Player</th>
                     <th>Score</th>
+                    <th>Time</th>
                 </tr>
             </thead>
             <tbody>
