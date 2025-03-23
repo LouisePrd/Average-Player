@@ -50,7 +50,7 @@
     transition: 0.3s;
 }
 
-#submit {
+#submit, #leave {
     font-family: "beaufort-pro", sans-serif;
     margin-top: 1rem;
     margin-bottom: 1rem;
@@ -64,7 +64,12 @@
     transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
 }
 
-#submit:hover {
+#leave {
+    background-color: #505050;
+    color: #F0E6D2;
+}
+
+#submit:hover, #leave:hover {
     background-color: #010A13;
     color: #C89B3C;
     transform: scale(1.05);
@@ -80,4 +85,11 @@
     background-color: #505050;
     color: #010A13;
     cursor: not-allowed;
+}
+
+.actions {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 0.5rem;
 }
