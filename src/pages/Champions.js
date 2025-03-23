@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useData } from "../services/Data";
+import { useData } from "../services/DataAPI";
 import { Champion } from "../components/Champion";
 import { Filter } from "../components/Filter";
 import "../styles/champions.css";

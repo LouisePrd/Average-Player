@@ -1,6 +1,6 @@
 import React from "react";
 import { useParams } from "react-router";
-import { useData } from "../services/Data";
+import { useData } from "../services/DataAPI";
 import "../styles/champion-detail.css";
 
 export function ChampionDetail() {

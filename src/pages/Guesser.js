@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { useData } from "../services/Data";
+import { useData } from "../services/DataAPI";
 import { EasyGuesser } from "../components/guesser/EasyGuesser";
 import { HardGuesser } from "../components/guesser/HardGuesser";
 import "../styles/guesser.css";
 
 export function Guesser() {
+  const pseudo = localStorage.getItem("pseudo") || "Unknown";
   const { randomChampion, allChampions, loading, error } = useData();
   const [selectedChampion, setSelectedChampion] = useState(null);
   const [nameOptions, setNameOptions] = useState([]);
@@ -12,12 +13,15 @@ export function Guesser() {
   const [showOptions, setShowOptions] = useState(true);
   const [difficulty, setDifficulty] = useState(null);
   const [streak, setStreak] = useState(0);
-  const [totalAttempts, setTotalAttempts] = useState(() =>
-    parseInt(localStorage.getItem("totalAttempts") || 0)
-  );
-  const [correctAnswers, setCorrectAnswers] = useState(() =>
-    parseInt(localStorage.getItem("correctAnswers") || 0)
-  );
+  const [totalAttempts, setTotalAttempts] = useState(0);
+  const [correctAnswers, setCorrectAnswers] = useState(0);
+
+  useEffect(() => {
+    const storedAttempts = parseInt(localStorage.getItem("totalAttempts")) || 0;
+    const storedCorrect = parseInt(localStorage.getItem("correctAnswers")) || 0;
+    setTotalAttempts(storedAttempts);
+    setCorrectAnswers(storedCorrect);
+  }, []);
 
   useEffect(() => {
     localStorage.setItem("totalAttempts", totalAttempts);
@@ -26,15 +30,15 @@ export function Guesser() {
 
   const getRandomNames = (correctName) => {
     if (!allChampions || allChampions.length < 3) return [correctName];
-
-    const shuffled = allChampions
-      .filter((c) => c.name !== correctName)
-      .sort(() => Math.random() - 0.5)
-      .slice(0, Math.min(2, allChampions.length - 1))
-      .map((c) => c.name);
-
-    return [...shuffled, correctName].sort(() => Math.random() - 0.5);
+  
+    const shuffled = [...allChampions]
+      .filter(c => c.name !== correctName)
+      .sort(() => 0.5 - Math.random());
+  
+    return [...shuffled.slice(0, 2).map(c => c.name), correctName]
+      .sort(() => 0.5 - Math.random());
   };
+  
 
   const startGame = (mode) => {
     if (!randomChampion) return;
@@ -94,6 +98,9 @@ export function Guesser() {
                 correctAnswers={correctAnswers}
                 setCorrectAnswers={setCorrectAnswers}
                 handleNext={handleNext}
+                pseudo={pseudo}
+                difficulty="easy"
+                typeGame="EasyGuesser"
               />
             )}
             {difficulty === "hard" && (
