@@ -1,24 +1,57 @@
-import React from "react";
+import { useState, useEffect } from "react";
+import {
+  getTopPlayers,
+  getFiveLastEasyGames,
+  getFiveLastHardGames,
+} from "../services/UserService";
+import { ScoreTable } from "../components/ScoreTable";
 import "../styles/scoreboard.css";
 
 export function Scoreboard() {
-    let pseudo = localStorage.getItem("pseudo");
-    let totalAttempts = parseInt(localStorage.getItem("totalAttempts") || 0);
+  const [players, setPlayers] = useState([]);
+  const [easyGames, setEasyGames] = useState([]);
+  const [hardGames, setHardGames] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-    return (
-        <div className="scoreboard">
-        <h1>Scoreboard</h1>
-        {pseudo ? (
-        <div className="score">
-            <p>Pseudo: {pseudo}</p>
-            <p>Total attempts: {totalAttempts}</p>
-        </div>    
-        ) : (
-        <div className="no-data">
-            <p>No data available<br></br>Play a game to see your score</p>
-            <button onClick={() => (window.location = "/")}>Home</button>
-                </div>
-            )}
-        </div>
-    );
-    }
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const [playersData, easyData, hardData] = await Promise.all([
+          getTopPlayers(),
+          getFiveLastEasyGames(),
+          getFiveLastHardGames(),
+        ]);
+
+        if (Array.isArray(playersData)) setPlayers(playersData);
+        if (Array.isArray(easyData)) setEasyGames(easyData);
+        if (Array.isArray(hardData)) setHardGames(hardData);
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error: {error}</p>;
+
+  return (
+    <div>
+      <h1>Scoreboard</h1>
+      <div className="scoreboard">
+        <h2 className="title-scores">Top players</h2>
+        <ScoreTable players={players} />
+
+        <h2 className="title-scores">Last easy games</h2>
+        <ScoreTable players={easyGames} />
+
+        <h2 className="title-scores">Last hard games</h2>
+        <ScoreTable players={hardGames} />
+      </div>
+    </div>
+  );
+}

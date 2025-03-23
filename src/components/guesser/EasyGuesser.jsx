@@ -1,4 +1,5 @@
-import React, { useState, useCallback } from "react";
+import { useState, useEffect } from "react";
+import { saveGameResult } from "../../services/UserService";
 
 export function EasyGuesser({
   selectedChampion,
@@ -11,31 +12,48 @@ export function EasyGuesser({
   setTotalAttempts,
   correctAnswers,
   setCorrectAnswers,
-  handleNext
+  handleNext,
+  pseudo,
+  difficulty,
+  typeGame,
 }) {
   const [selectedName, setSelectedName] = useState(null);
+  const { name: championName, img: championImg } = selectedChampion || {};
+  const [gameFinished, setGameFinished] = useState(false);
 
-  const checkChampion = useCallback((name) => {
-    if (!selectedChampion) return;
-    
+  const checkChampion = (name) => {
+    if (!championName) return;
 
     setSelectedName(name);
-    setTotalAttempts(prev => prev + 1);
+    setTotalAttempts((prev) => prev + 1);
 
-    if (name.trim().toLowerCase() === selectedChampion.name.trim().toLowerCase()) {
-      setIsCorrect(true);
-      setCorrectAnswers(prev => prev + 1);
-      setStreak(prev => prev + 1);
-    } else {
-      setIsCorrect(false);
-      setStreak(0);
+    const isAnswerCorrect = name.trim().toLowerCase() === championName.trim().toLowerCase();
+    setIsCorrect(isAnswerCorrect);
+    setStreak((prev) => (isAnswerCorrect ? prev + 1 : 0));
+    setCorrectAnswers((prev) => (isAnswerCorrect ? prev + 1 : prev));
+
+    // Marquer la partie comme terminée si on veut sauvegarder à la fin du jeu
+    if (isAnswerCorrect) {
+      setGameFinished(true);
     }
-  }, [selectedChampion, setIsCorrect, setStreak, setTotalAttempts, setCorrectAnswers]);
+  };
+
+  useEffect(() => {
+    if (gameFinished) {
+      saveGameResult(pseudo, difficulty, correctAnswers, typeGame);
+      setGameFinished(false); // Reset après sauvegarde
+    }
+  }, [gameFinished, pseudo, difficulty, correctAnswers, typeGame]);
+
+  const leave = async () => {
+    setGameFinished(true);
+    window.location.href = "/";
+  };
 
   return (
     <div className="easy-guesser">
       <div className="easy-guesser-card">
-        <img src={selectedChampion.img} alt={selectedChampion.name} />
+        <img src={championImg} alt={championName} />
 
         <div className="name-options">
           {nameOptions.map((name) => (
@@ -45,11 +63,11 @@ export function EasyGuesser({
               disabled={isCorrect !== null}
               className={
                 isCorrect !== null
-                  ? name === selectedChampion.name
+                  ? name === championName
                     ? "correct"
                     : name === selectedName
-                      ? "incorrect"
-                      : ""
+                    ? "incorrect"
+                    : ""
                   : ""
               }
             >
@@ -61,10 +79,18 @@ export function EasyGuesser({
         <div className="easy-guesser-results">
           {isCorrect !== null && (
             <div className={isCorrect ? "result-correct" : "result-incorrect"}>
-              {isCorrect ? "Correct, again ?" : `Incorrect, it was ${selectedChampion.name}.`}
+              {isCorrect ? "Correct, again ?" : `Incorrect, it was ${championName}.`}
             </div>
           )}
-          <button id="submit" onClick={handleNext} disabled={isCorrect === null}>Next</button>
+
+          <div className="actions">
+            <button id="submit" onClick={handleNext} disabled={isCorrect === null}>
+              Next
+            </button>
+            <button id="leave" onClick={leave}>
+              Leave and save
+            </button>
+          </div>
         </div>
       </div>
     </div>
