@@ -29,9 +29,7 @@ export function Navbar() {
           <Link to="/scores">Scoreboard</Link>
         </li>
         <li className={location.pathname === "/profile" ? "active" : ""}>
-          <Link to="/profile">
             <img id="user" src="/assets/user.png" alt="user" />
-          </Link>
           {isConnected() ? (
             <p id="pseudo">{localStorage.getItem("pseudo")}</p>
           ) : (
