@@ -4,8 +4,9 @@ import {
   getFiveLastEasyGames,
   getFiveLastHardGames,
 } from "../services/UserService";
-import { ScoreTable } from "../components/ScoreTable";
 import "../styles/scoreboard.css";
+import { ScoreTable } from "../components/ScoreTable";
+import { ScoreTableHard } from "../components/ScoreTableHard";
 
 export function Scoreboard() {
   const [players, setPlayers] = useState([]);
@@ -44,7 +45,7 @@ export function Scoreboard() {
       <h1>Scoreboard</h1>
       <div className="scoreboard">
         <h2 className="title-scores">Top players</h2>
-        <ScoreTable players={players} />
+        <ScoreTableHard players={players} />
 
         <h2 className="title-scores">Last easy games</h2>
         <ScoreTable players={easyGames} />
