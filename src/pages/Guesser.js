@@ -115,6 +115,9 @@ export function Guesser() {
                 correctAnswers={correctAnswers}
                 setCorrectAnswers={setCorrectAnswers}
                 handleNext={handleNext}
+                pseudo={pseudo}
+                difficulty="hard"
+                typeGame="HardGuesser"
               />
             )}
           </div>

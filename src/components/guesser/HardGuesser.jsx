@@ -1,4 +1,5 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useRef } from "react";
+import { saveGameResult } from "../../services/UserService";
 
 export function HardGuesser({
   selectedChampion,
@@ -11,9 +12,13 @@ export function HardGuesser({
   correctAnswers,
   setCorrectAnswers,
   handleNext,
+  pseudo,
+  difficulty,
+  typeGame,
 }) {
   const [inputName, setInputName] = useState("");
   const [hasAttempted, setHasAttempted] = useState(false);
+  const hasSaved = useRef(false);
 
   const checkChampion = useCallback(() => {
     if (!selectedChampion || !inputName.trim()) return;
@@ -21,24 +26,27 @@ export function HardGuesser({
     setTotalAttempts((prev) => prev + 1);
     setHasAttempted(true);
 
-    if (
-      inputName.trim().toLowerCase() === selectedChampion.name.toLowerCase()
-    ) {
-      setIsCorrect(true);
-      setCorrectAnswers((prev) => prev + 1);
-      setStreak((prev) => prev + 1);
-    } else {
-      setIsCorrect(false);
-      setStreak(0);
+    const isAnswerCorrect = inputName.trim().toLowerCase() === selectedChampion.name.toLowerCase();
+    setIsCorrect(isAnswerCorrect);
+    setCorrectAnswers((prev) => (isAnswerCorrect ? prev + 1 : prev));
+    setStreak((prev) => (isAnswerCorrect ? prev + 1 : 0));
+
+    if (isAnswerCorrect) {
+      hasSaved.current = false;
     }
-  }, [
-    selectedChampion,
-    inputName,
-    setIsCorrect,
-    setStreak,
-    setTotalAttempts,
-    setCorrectAnswers,
-  ]);
+  }, [selectedChampion, inputName, setIsCorrect, setStreak, setTotalAttempts, setCorrectAnswers]);
+
+  const saveGame = useCallback(() => {
+    if (!hasSaved.current) {
+      hasSaved.current = true;
+      saveGameResult(pseudo, difficulty, correctAnswers, typeGame);
+    }
+  }, [pseudo, difficulty, correctAnswers, typeGame]);
+
+  const leave = async () => {
+    saveGame();
+    window.location.href = "/";
+  };
 
   return (
     <div className="hard-guesser">
@@ -54,34 +62,39 @@ export function HardGuesser({
             placeholder="Enter champion name..."
           />
 
-          <button
-            id="submit"
-            onClick={checkChampion}
-            disabled={!inputName.trim() || isCorrect !== null}
-          >
+          <button id="submit" onClick={checkChampion} disabled={!inputName.trim() || isCorrect !== null}>
             Submit
           </button>
         </div>
 
         {hasAttempted && (
           <div className={isCorrect ? "result-correct" : "result-incorrect"}>
-            {isCorrect
-              ? "Correct!"
-              : `Incorrect! The correct answer was ${selectedChampion.name}.`}
+            {isCorrect ? "Correct!" : `Incorrect! The correct answer was ${selectedChampion.name}.`}
           </div>
         )}
 
-        <button
-          id="submit"
-          onClick={() => {
-            handleNext();
-            setInputName("");
-            setHasAttempted(false);
-          }}
-          disabled={!hasAttempted}
-        >
-          Next
-        </button>
+        <div className="actions">
+          <button
+            id="submit"
+            onClick={() => {
+              handleNext();
+              setInputName("");
+              setHasAttempted(false);
+
+              if (correctAnswers % 5 === 0 && correctAnswers !== 0) {
+                saveGame();
+              }
+
+              hasSaved.current = false;
+            }}
+            disabled={!hasAttempted}
+          >
+            Next
+          </button>
+          <button id="leave" onClick={leave}>
+            Leave and save
+          </button>
+        </div>
       </div>
     </div>
   );

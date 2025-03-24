@@ -32,7 +32,6 @@ export function EasyGuesser({
     setStreak((prev) => (isAnswerCorrect ? prev + 1 : 0));
     setCorrectAnswers((prev) => (isAnswerCorrect ? prev + 1 : prev));
 
-    // Marquer la partie comme terminée si on veut sauvegarder à la fin du jeu
     if (isAnswerCorrect) {
       setGameFinished(true);
     }
@@ -41,7 +40,7 @@ export function EasyGuesser({
   useEffect(() => {
     if (gameFinished) {
       saveGameResult(pseudo, difficulty, correctAnswers, typeGame);
-      setGameFinished(false); // Reset après sauvegarde
+      setGameFinished(false);
     }
   }, [gameFinished, pseudo, difficulty, correctAnswers, typeGame]);
 
