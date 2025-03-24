@@ -24,7 +24,9 @@ export function Games() {
         <p>
           Would you smash or pass this champion?<br></br>(Please not minors)
         </p>
-        <button id="btn-games">Play</button>
+        <button id="btn-games"
+        onClick={() => (window.location.href = "/games/smash-or-pass")}
+        >Play</button>
       </div>
     </div>
   );

@@ -6,7 +6,7 @@
     max-width: 900px;
 }
 
-.guesser, .memory {
+.guesser, .smash-or-pass {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -14,19 +14,20 @@
     background-color: #f5f5f5;
     width: 45%;
     border-radius: 5px;
+    margin-top: 1rem;
 }
 
-.guesser h2, .memory h2 {
-    font-size: 1.7rem;
+.guesser h2, .smash-or-pass h2 {
+    font-size: 1.6rem;
     font-family: "beaufort-pro", sans-serif;
-    min-height: 80px;
     padding-top: 1rem;
     padding-left: 1rem;
     padding-right: 1rem;
 }
 
-.guesser p, .memory p {
+.guesser p, .smash-or-pass p {
     color: #010A13;
+    padding: 1rem;
 }
 
 .games h1, .games p {
@@ -36,7 +37,7 @@
 .games p {
     font-family: "beaufort-pro", sans-serif;
     font-size: 1.2rem;
-
+    margin-bottom: 1rem;
 }
 
 #btn-games, #btn-difficulty {
@@ -85,9 +86,6 @@
 }
 
 
-
-
-
 #leblanc-img {
     position: absolute;
     top: -210px;
@@ -99,6 +97,53 @@
     z-index: 10;
 }
 
+.smash-or-pass {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.action button {
+    margin: 0.5rem;
+    border: 1px solid #C89B3C;
+    border-radius: 5px;
+    background-color: #010A13;
+    color: #F0E6D2;
+    font-size: 1.2rem;
+    padding-left: 0.8rem;
+    padding-right: 0.8rem;
+    padding-top: 0.3rem;
+    padding-bottom: 0.3rem;
+    margin-top: 1rem;
+    cursor: pointer;
+}
+
+.action button:hover {
+    background-color: #C89B3C;
+    color: #010A13;
+    transition: 0.3s;
+}
+
+#next {
+    font-family: "beaufort-pro", sans-serif;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    cursor: pointer;
+    background-color: #C89B3C;
+    color: #010A13;
+    font-size: 1.3rem;
+    border-radius: 5px;
+}
+
+.champion-choice img {
+    width: 200px;
+    height: auto;
+    border-radius: 10px;
+    margin: 0 auto;
+    margin-bottom: 1rem;
+    transition: transform 0.2s ease;
+}
+
 
 @media screen and (max-width: 768px) {
     .games {
@@ -106,7 +151,7 @@
         align-items: center;
     }
 
-    .guesser, .memory {
+    .guesser, .smash-or-pass {
         width: 90%;
     }
 

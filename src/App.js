@@ -7,6 +7,7 @@ import { Home } from "./pages/Home";
 import { Scoreboard } from "./pages/Scoreboard";
 import { Games } from "./pages/Games";
 import { Guesser } from "./pages/Guesser";
+import { SmashOrPass } from "./pages/SmashOrPass";
 import { ChampionDetail } from "./pages/ChampionDetails";
 import "./App.css";
 
@@ -20,6 +21,7 @@ function App() {
         <Route path="/scores" element={<Scoreboard />} />
         <Route path="/games" element={<Games />} />
         <Route path="/games/guesser" element={<Guesser />} />
+        <Route path="/games/smash-or-pass" element={<SmashOrPass />} />
         <Route path="/champions/:name" element={<ChampionDetail />} />
       </Routes>
       <Footer />
