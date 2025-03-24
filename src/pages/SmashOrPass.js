@@ -60,12 +60,16 @@ export function SmashOrPass() {
           </>
         ) : (
           <div>
-            <p>Smashed by {getPercentage(stats.smash, stats.smash + stats.pass)}% of users</p>
+            {loading ? (
+              <p>Updating stats...</p>
+            ) : (
+              <p>Smashed by {getPercentage(stats.smash, stats.smash + stats.pass)}% of users</p>
+            )}
           </div>
         )}
       </div>
 
-      {chosen && (
+      {chosen && !loading && (
         <button id="next" onClick={nextChampion}>
           Next
         </button>
