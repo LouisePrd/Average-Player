@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useData } from "../services/DataAPI";
 import { NextBtn } from "../components/buttons/NextBtn";
 import { insertChampionByName } from "../services/UserService";
+import "../styles/games.css";
 
 export function SmashOrPass() {
   const { allChampions } = useData();

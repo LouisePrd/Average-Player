@@ -7,6 +7,8 @@ import {
 import "../styles/scoreboard.css";
 import { ScoreTable } from "../components/ScoreTable";
 import { ScoreTableHard } from "../components/ScoreTableHard";
+import { LoadingMessage } from "../components/utils/LoadingMessage";
+import { ErrorMessage } from "../components/utils/ErrorMessage";
 
 export function Scoreboard() {
   const [players, setPlayers] = useState([]);
@@ -37,8 +39,8 @@ export function Scoreboard() {
     fetchData();
   }, []);
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error: {error}</p>;
+  if (loading) return <LoadingMessage />;
+  if (error) return <ErrorMessage message={error} />;
 
   return (
     <div>

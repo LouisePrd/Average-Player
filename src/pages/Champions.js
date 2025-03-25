@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { useData } from "../services/DataAPI";
 import { Champion } from "../components/Champion";
 import { Filter } from "../components/Filter";
+import { LoadingMessage } from "../components/utils/LoadingMessage";
+import { ErrorMessage } from "../components/utils/ErrorMessage";
 import "../styles/champions.css";
 import { Link } from "react-router";
 
@@ -11,10 +13,10 @@ export function Champions() {
   const [sortOrder, setSortOrder] = useState("asc");
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <LoadingMessage />;
   }
   if (error) {
-    return <div>Error: {error.message}</div>;
+    return <ErrorMessage error={error} />;
   }
 
   const tags = ["All", ...new Set(allChampions.flatMap((champ) => champ.tags))];

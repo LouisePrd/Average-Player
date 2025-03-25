@@ -26,10 +26,10 @@ export function Home() {
         <div className="concept-intro">
           {isConnected() ? (
             <div>
-            <p>Welcome back {getUserName()} !</p>
+            <p>Welcome {getUserName()} !</p>
             <button id="disconnect" onClick={disconnect}>Disconnect</button>
             </div>
-          ) : (
+          ) : null}
             <div>
               <p>
                 You've spent days, months, years playing, watching gameplays,
@@ -41,9 +41,10 @@ export function Home() {
                 to know about the game's universe? Test yourself: enter the
                 Summoner's Rift and see if you can answer all these questions!
               </p>
+              { !isConnected() ? (
               <Connect />
+              ) : null}
             </div>
-          )}
         </div>
 
         

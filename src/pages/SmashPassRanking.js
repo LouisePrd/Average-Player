@@ -1,6 +1,8 @@
 import React from "react";
 import { getTopSmash, getTopPass } from "../services/UserService";
 import { useData } from "../services/DataAPI";
+import { LoadingMessage } from "../components/utils/LoadingMessage";
+import { ErrorMessage } from "../components/utils/ErrorMessage";
 import "../styles/smash-pass.css";
 
 export function SmashPassRanking() {
@@ -47,8 +49,8 @@ export function SmashPassRanking() {
     fetchData();
   }, [championByName]);
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error: {error}</p>;
+  if (loading) return <LoadingMessage />;
+  if (error) return <ErrorMessage message={error} />;
 
   return (
     <div className="smash-pass-ranking">
