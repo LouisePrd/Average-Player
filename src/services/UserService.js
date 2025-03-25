@@ -1,5 +1,6 @@
 import { createClient } from "@supabase/supabase-js";
 
+// Récupération des variables d'environnement .env (sécurité)
 const supabaseUrl = process.env.REACT_APP_SUPABASE_URL;
 const supabaseKey = process.env.REACT_APP_SUPABASE_ANON_KEY;
 const supabase = createClient(supabaseUrl, supabaseKey);
@@ -20,12 +21,10 @@ export const saveGameResult = async (pseudo, difficulty, score, typeGame) => {
     },
   ]);
 
-  if (error)
-    return null;
+  if (error) return null;
 
   return data;
 };
-
 
 // Requête BDD Supabase pour récupérer les 5 dernières parties faciles
 // Page Scoreboard
@@ -41,7 +40,6 @@ export const getFiveLastEasyGames = async () => {
 
   return data || [];
 };
-
 
 // Requête BDD Supabase pour récupérer les 5 dernières parties difficiles
 // Page Scoreboard
@@ -86,11 +84,38 @@ export const championByName = async (name) => {
   return data;
 };
 
+// Requête BDD Supabase pour récupérer les 5 champions les plus smashés
+// Page SmashOrPass
+export const getTopSmash = async () => {
+  const { data, error } = await supabase
+    .from("champions")
+    .select("*")
+    .order("smash", { ascending: false })
+    .limit(5);
+
+  if (error) throw new Error(error.message);
+
+  return data || [];
+};
+
+// Requête BDD Supabase pour récupérer les 5 champions les plus passés
+// Page SmashOrPass
+export const getTopPass = async () => {
+  const { data, error } = await supabase
+    .from("champions")
+    .select("*")
+    .order("pass", { ascending: false })
+    .limit(5);
+
+  if (error) throw new Error(error.message);
+
+  return data || [];
+};
 
 // Requête BDD Supabase pour update le nombre de smash ou pass d'un champion
 // Page SmashOrPass
 export const insertChampionByName = async (champion, type) => {
-  if (!champion?.name) throw new Error("Le nom du champion est requis !");
+  if (!champion?.name) throw new Error("Missing champion name");
 
   // Vérifier si le champion existe
   const { data: existingChampion, error: fetchError } = await supabase
@@ -106,7 +131,9 @@ export const insertChampionByName = async (champion, type) => {
   // Si le champion existe, on update les stats
   if (existingChampion) {
     const updateField =
-      type === "Smash" ? { smash: existingChampion.smash + 1 } : { pass: existingChampion.pass + 1 };
+      type === "Smash"
+        ? { smash: existingChampion.smash + 1 }
+        : { pass: existingChampion.pass + 1 };
 
     const { data, error } = await supabase
       .from("champions")
@@ -116,14 +143,18 @@ export const insertChampionByName = async (champion, type) => {
 
     if (error) throw new Error(error.message);
     updatedStats = data[0];
-  } else { // Sinon on le crée
+  } else {
+    // Sinon on le crée
     const newChampion = {
       name: champion.name,
       smash: type === "Smash" ? 1 : 0,
       pass: type === "Pass" ? 1 : 0,
     };
 
-    const { data, error } = await supabase.from("champions").insert([newChampion]).select(); // 🔹 Récupère les valeurs insérées
+    const { data, error } = await supabase
+      .from("champions")
+      .insert([newChampion])
+      .select(); // 🔹 Récupère les valeurs insérées
 
     if (error) throw new Error(error.message);
     updatedStats = data[0];
@@ -131,4 +162,3 @@ export const insertChampionByName = async (champion, type) => {
 
   return updatedStats;
 };
-
