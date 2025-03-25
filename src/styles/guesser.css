@@ -50,7 +50,7 @@
     transition: 0.3s;
 }
 
-#submit, #leave {
+#next, #leave {
     font-family: "beaufort-pro", sans-serif;
     margin-top: 1rem;
     margin-bottom: 1rem;
@@ -69,19 +69,19 @@
     color: #F0E6D2;
 }
 
-#submit:hover, #leave:hover {
+#next:hover, #leave:hover {
     background-color: #010A13;
     color: #C89B3C;
     transform: scale(1.05);
     box-shadow: 0 0 10px rgba(200, 155, 60, 0.8);
 }
 
-#submit:active {
+#next:active {
     transform: scale(0.95);
     box-shadow: 0 0 5px rgba(200, 155, 60, 0.6);
 }
 
-#submit:disabled {
+#next:disabled {
     background-color: #505050;
     color: #010A13;
     cursor: not-allowed;
