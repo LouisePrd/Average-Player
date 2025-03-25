@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, useLocation } from "react-router";
+import { Link, useLocation, useNavigate} from "react-router";
 import "../styles/navbar.css";
 
 function isConnected() {
@@ -12,18 +12,30 @@ function isConnected() {
 
 export function Navbar() {
   const location = useLocation();
+  const navigate = useNavigate();
+
+  const handleSelectChange = (event) => {
+    const value = event.target.value;
+    if (value) {
+      navigate(`/games/${value}`);
+    }
+  };
 
   return (
     <nav>
-      <ul>
-        <li className={location.pathname === "/" ? "active" : ""}>
-          <Link to="/">Home</Link>
-        </li>
+      <ul className="nav-links">
         <li className={location.pathname === "/champions" ? "active" : ""}>
           <Link to="/champions">Champions</Link>
         </li>
         <li className={location.pathname === "/games" ? "active" : ""}>
-          <Link to="/games">Games</Link>
+          <select onChange={handleSelectChange} defaultValue="">
+            <option value="" disabled>Smash Or Pass</option>
+            <option value="smash-or-pass-play">Play</option>
+            <option value="smash-or-pass-rank">Top and Flop</option>
+          </select>
+        </li>
+        <li className={location.pathname === "/games/guesser" ? "active" : ""}>
+          <Link to="/games/guesser">Guesser</Link>
         </li>
         <li className={location.pathname === "/scoreboard" ? "active" : ""}>
           <Link to="/scores">Scoreboard</Link>
