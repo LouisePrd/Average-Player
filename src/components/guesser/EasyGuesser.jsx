@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { NextBtn } from "../buttons/NextBtn";
 import { saveGameResult } from "../../services/UserService";
 
@@ -20,7 +20,7 @@ export function EasyGuesser({
 }) {
   const [selectedName, setSelectedName] = useState(null);
   const { name: championName, img: championImg } = selectedChampion || {};
-  const [gameFinished, setGameFinished] = useState(false);
+  const hasSaved = useRef(false);
 
   const checkChampion = (name) => {
     if (!championName) return;
@@ -34,19 +34,29 @@ export function EasyGuesser({
     setCorrectAnswers((prev) => (isAnswerCorrect ? prev + 1 : prev));
 
     if (isAnswerCorrect) {
-      setGameFinished(true);
+      hasSaved.current = false;
     }
   };
 
   useEffect(() => {
-    if (gameFinished) {
+    if (isCorrect && !hasSaved.current && correctAnswers % 5 === 0 && correctAnswers !== 0) {
+      hasSaved.current = true;
       saveGameResult(pseudo, difficulty, correctAnswers, typeGame);
-      setGameFinished(false);
     }
-  }, [gameFinished, pseudo, difficulty, correctAnswers, typeGame]);
+  }, [isCorrect, pseudo, difficulty, correctAnswers, typeGame]);
+
+  const handleNextQuestion = () => {
+    setSelectedName(null);
+    setIsCorrect(null);
+    hasSaved.current = false;
+    handleNext();
+  };
 
   const leave = async () => {
-    setGameFinished(true);
+    if (!hasSaved.current) {
+      hasSaved.current = true;
+      saveGameResult(pseudo, difficulty, correctAnswers, typeGame);
+    }
     window.location.href = "/";
   };
 
@@ -84,7 +94,7 @@ export function EasyGuesser({
           )}
 
           <div className="actions">
-            <NextBtn onClick={handleNext} />
+            <NextBtn onClick={handleNextQuestion} />
             <button id="leave" onClick={leave}>
               Leave and save
             </button>
