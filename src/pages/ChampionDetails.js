@@ -5,25 +5,25 @@ import "../styles/champion-detail.css";
 
 export function ChampionDetail() {
   const { name } = useParams();
-  const { championByName } = useData();
-  const champion = championByName(name);
+  const { allChampions, loading, error } = useData();
 
-  if (!champion) {
-    return <div>Champion not found</div>;
-  }
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>{error.message}</div>;
 
-  if (!champion) {
-    return <div>Champion not found</div>;
-  }
+  const champion = allChampions.find((champ) => champ.name === name);
+
+  if (!champion) return <div>Champion not found</div>;
 
   return (
     <div className="champion-detail">
       <h1>{champion.name}</h1>
       <img src={champion.img} alt={champion.name} />
       <div className="champion-info">
-        <p>Title : {champion.title}</p>
+        <p>Title: {champion.title}</p>
         <p>{champion.blurb}</p>
-        <p>Tags : {champion.tags.join(", ")}</p>
+        <p>
+          Tags: {champion.tags ? champion.tags.join(", ") : "No tags available"}
+        </p>
       </div>
     </div>
   );

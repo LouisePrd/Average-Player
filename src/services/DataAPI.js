@@ -1,5 +1,12 @@
 import { useState, useEffect } from "react";
 
+// Fonction pour mettre la première lettre en majuscule
+function strUcFirst(str) {
+  return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
+// Récupération données de l'API : champion aléatoire
+// Page Guesser
 function getRandomChampion(champions) {
   if (!champions || !champions.length) {
     return null;
@@ -14,10 +21,8 @@ function getRandomChampion(champions) {
   };
 }
 
-function strUcFirst(str) {
-  return str.charAt(0).toUpperCase() + str.slice(1);
-}
-
+// Récupération données de l'API : tous les champions
+// Page Champions
 function getAllChampions(champions) {
   if (!champions || !champions.length) {
     return null;
@@ -31,23 +36,28 @@ function getAllChampions(champions) {
   }));
 }
 
-function getChampionByName(champions, name) {
-  if (!champions || !champions.length) {
+// Récupération données de l'API : champion par nom
+// Page Detail Champion
+async function getChampionByName(champions, name) {
+  try {
+    const champion = champions.find(champ => champ.name.toLowerCase() === name.toLowerCase());
+    if (!champion) {
+      return null;
+    }
+
+    return {
+      name: champion.name,
+      title: strUcFirst(champion.title),
+      img: `https://ddragon.leagueoflegends.com/cdn/15.4.1/img/champion/${champion.image.full}`,
+      blurb: champion.blurb,
+      tags: champion.tags || []
+    };
+  } catch (error) {
     return null;
   }
-  const champion = champions.find(champ => champ.name.toLowerCase() === name.toLowerCase());
-  if (!champion) {
-    return null;
-  }
-  return {
-    name: champion.name,
-    title: strUcFirst(champion.title),
-    img: `https://ddragon.leagueoflegends.com/cdn/15.4.1/img/champion/${champion.image.full}`,
-    blurb: champion.blurb,
-    tags: champion.tags
-  };
 }
 
+// Hook pour les données de l'API
 export const useData = () => {
   const [champions, setChampions] = useState([]);
   const [error, setError] = useState(null);
@@ -68,6 +78,7 @@ export const useData = () => {
     fetchData();
   }, []);
 
+  // Retourne les fonctions de récupération des données
   return { 
     randomChampion: champions.length > 0 ? getRandomChampion(champions) : null,
     allChampions: champions.length > 0 ? getAllChampions(champions) : [],
