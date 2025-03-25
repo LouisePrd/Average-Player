@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, useLocation, useNavigate} from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import "../styles/navbar.css";
 
 function isConnected() {
@@ -8,7 +8,6 @@ function isConnected() {
   }
   return false;
 }
-
 
 export function Navbar() {
   const location = useLocation();
@@ -29,7 +28,9 @@ export function Navbar() {
         </li>
         <li className={location.pathname === "/games" ? "active" : ""}>
           <select onChange={handleSelectChange} defaultValue="">
-            <option value="" disabled>Smash Or Pass</option>
+            <option value="" disabled>
+              Smash Or Pass
+            </option>
             <option value="smash-or-pass-play">Play</option>
             <option value="smash-or-pass-rank">Top and Flop</option>
           </select>
@@ -41,24 +42,22 @@ export function Navbar() {
           <Link to="/scores">Scoreboard</Link>
         </li>
         <li className={location.pathname === "/profile" ? "active" : ""}>
-            <img id="user" src="/assets/user.png" alt="user" />
+          <img id="user" src="/assets/user.png" alt="user" />
           {isConnected() ? (
             <p id="pseudo">{localStorage.getItem("pseudo")}</p>
           ) : (
             ""
-          )
-            
-          }
+          )}
         </li>
       </ul>
       <div className="logos">
-      <img
-        id="logo"
-        src="/assets/logo.png"
-        alt="logo"
-        onClick={() => (window.location = "/")}
-      />
-      <p>AveragePlayer.gg</p>
+        <img
+          id="logo"
+          src="/assets/logo.png"
+          alt="logo"
+          onClick={() => (window.location = "/")}
+        />
+        <p>AveragePlayer.gg</p>
       </div>
     </nav>
   );
