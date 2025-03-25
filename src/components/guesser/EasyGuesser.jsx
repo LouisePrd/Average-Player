@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { NextBtn } from "../buttons/NextBtn";
 import { saveGameResult } from "../../services/UserService";
 
 export function EasyGuesser({
@@ -83,9 +84,7 @@ export function EasyGuesser({
           )}
 
           <div className="actions">
-            <button id="submit" onClick={handleNext} disabled={isCorrect === null}>
-              Next
-            </button>
+            <NextBtn onClick={handleNext} />
             <button id="leave" onClick={leave}>
               Leave and save
             </button>

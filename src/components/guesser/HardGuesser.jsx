@@ -1,4 +1,5 @@
 import React, { useState, useCallback, useRef } from "react";
+import { NextBtn } from "../buttons/NextBtn";
 import { saveGameResult } from "../../services/UserService";
 
 export function HardGuesser({
@@ -74,8 +75,7 @@ export function HardGuesser({
         )}
 
         <div className="actions">
-          <button
-            id="submit"
+          <NextBtn
             onClick={() => {
               handleNext();
               setInputName("");
@@ -88,9 +88,8 @@ export function HardGuesser({
               hasSaved.current = false;
             }}
             disabled={!hasAttempted}
-          >
-            Next
-          </button>
+          />
+          
           <button id="leave" onClick={leave}>
             Leave and save
           </button>

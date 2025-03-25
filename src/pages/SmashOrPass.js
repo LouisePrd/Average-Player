@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useData } from "../services/DataAPI";
+import { NextBtn } from "../components/buttons/NextBtn";
 import { insertChampionByName } from "../services/UserService";
 
 export function SmashOrPass() {
@@ -70,9 +71,7 @@ export function SmashOrPass() {
       </div>
 
       {chosen && !loading && (
-        <button id="next" onClick={nextChampion}>
-          Next
-        </button>
+        <NextBtn onClick={nextChampion} />
       )}
     </div>
   );
