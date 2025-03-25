@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useData } from "../services/DataAPI";
 import { NextBtn } from "../components/buttons/NextBtn";
 import { insertChampionByName } from "../services/UserService";
@@ -9,6 +9,14 @@ export function SmashOrPass() {
   const [loading, setLoading] = useState(false);
   const [chosen, setChosen] = useState(null);
   const [stats, setStats] = useState({ smash: 0, pass: 0 });
+
+  // Pour éviter de recommencer au début de la liste à chaque rechargement
+  useEffect(() => {
+    const savedIndex = localStorage.getItem("championIndex");
+    if (savedIndex !== null) {
+      setIndex(parseInt(savedIndex, 10));
+    }
+  }, []);
 
   if (!allChampions || allChampions.length === 0) {
     return <p>Loading champions...</p>;
@@ -22,7 +30,10 @@ export function SmashOrPass() {
     setChosen(type);
 
     try {
-      const updatedStats = await insertChampionByName({ name: championName }, type);
+      const updatedStats = await insertChampionByName(
+        { name: championName },
+        type
+      );
       setStats(updatedStats);
     } catch (error) {
       console.error(error);
@@ -33,7 +44,9 @@ export function SmashOrPass() {
 
   function nextChampion() {
     setChosen(null);
-    setIndex((prevIndex) => (prevIndex + 1) % allChampions.length);
+    const newIndex = (index + 1) % allChampions.length;
+    localStorage.setItem("championIndex", newIndex);
+    setIndex(newIndex);
   }
 
   function getPercentage(value, total) {
@@ -52,10 +65,18 @@ export function SmashOrPass() {
       <div className="action">
         {!chosen ? (
           <>
-            <button id="smash" onClick={() => handleChoice("Smash")} disabled={loading}>
+            <button
+              id="smash"
+              onClick={() => handleChoice("Smash")}
+              disabled={loading}
+            >
               {loading ? "Loading..." : "Smash"}
             </button>
-            <button id="pass" onClick={() => handleChoice("Pass")} disabled={loading}>
+            <button
+              id="pass"
+              onClick={() => handleChoice("Pass")}
+              disabled={loading}
+            >
               {loading ? "Loading..." : "Pass"}
             </button>
           </>
@@ -64,15 +85,16 @@ export function SmashOrPass() {
             {loading ? (
               <p>Updating stats...</p>
             ) : (
-              <p>Smashed by {getPercentage(stats.smash, stats.smash + stats.pass)}% of users</p>
+              <p>
+                Smashed by{" "}
+                {getPercentage(stats.smash, stats.smash + stats.pass)}% of users
+              </p>
             )}
           </div>
         )}
       </div>
 
-      {chosen && !loading && (
-        <NextBtn onClick={nextChampion} />
-      )}
+      {chosen && !loading && <NextBtn onClick={nextChampion} />}
     </div>
   );
 }
