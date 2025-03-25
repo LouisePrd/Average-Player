@@ -1,6 +1,7 @@
 import React from "react";
 import { useParams } from "react-router";
 import { useData } from "../services/DataAPI";
+import { Champion } from "../components/Champion";
 import "../styles/champion-detail.css";
 
 export function ChampionDetail() {
@@ -15,16 +16,8 @@ export function ChampionDetail() {
   if (!champion) return <div>Champion not found</div>;
 
   return (
-    <div className="champion-detail">
-      <h1>{champion.name}</h1>
-      <img src={champion.img} alt={champion.name} />
-      <div className="champion-info">
-        <p>Title: {champion.title}</p>
-        <p>{champion.blurb}</p>
-        <p>
-          Tags: {champion.tags ? champion.tags.join(", ") : "No tags available"}
-        </p>
-      </div>
+    <div>
+      <Champion champion={champion} mode="detail" />
     </div>
   );
 }
