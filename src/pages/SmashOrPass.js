@@ -57,6 +57,12 @@ export function SmashOrPass() {
     <div className="smash-or-pass-page">
       <h1>Smash or Pass</h1>
 
+      <div className="index">
+        <p>
+          {index + 1} / {allChampions.length} champions
+        </p>
+      </div>
+
       <div className="champion-choice">
         <img src={championImg} alt={championName} />
         <h2>{championName}</h2>
