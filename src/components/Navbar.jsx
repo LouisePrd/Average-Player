@@ -2,6 +2,8 @@ import React from "react";
 import { Link, useLocation, useNavigate } from "react-router";
 import "../styles/navbar.css";
 
+
+// On affiche le pseudo de l'utilisateur si il est connecté
 function isConnected() {
   if (localStorage.getItem("pseudo")) {
     return true;
@@ -9,6 +11,8 @@ function isConnected() {
   return false;
 }
 
+
+// Barre de navigation
 export function Navbar() {
   const location = useLocation();
   const navigate = useNavigate();

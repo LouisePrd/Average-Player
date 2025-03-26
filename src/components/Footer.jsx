@@ -1,6 +1,8 @@
 import React from "react";
 import "../styles/footer.css";
 
+
+// Footer avec infos des réseaux sociaux de LoL et le copyrigth
 export function Footer() {
   return (
     <footer>

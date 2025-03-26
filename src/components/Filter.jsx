@@ -1,5 +1,6 @@
 import React from "react";
 
+// Filtres par tag et ordre alphabétique
 export function Filter({ selectedTag, setSelectedTag, sortOrder, setSortOrder, tags }) {
   return (
     <div className="filters">

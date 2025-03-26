@@ -1,5 +1,6 @@
 import { useState } from "react";
 
+// Composant pour se connecter avec localStorage
 export function Connect() {
   const [pseudo, setPseudo] = useState("");
   const [loading, setLoading] = useState(false);
@@ -10,7 +11,6 @@ export function Connect() {
       alert("Invalid pseudo");
       return;
     }
-
     setLoading(true);
     try {
       localStorage.setItem("pseudo", trimmedPseudo);

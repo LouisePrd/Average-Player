@@ -1,6 +1,5 @@
 
-
-
+// Scores des joueurs sous forme de tableau pour le Guesser
 export function ScoreTable({ players }) {
     return (
         <table>

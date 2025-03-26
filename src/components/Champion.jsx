@@ -2,6 +2,8 @@ import React from "react";
 import "../styles/champions.css";
 import "../styles/champion-detail.css";
 
+
+// Card Champion qui s'adapte en fonction du mode : card ou detail
 export function Champion({ champion, mode = "card" }) {
   if (!champion) return <div>Champion not found</div>;
 

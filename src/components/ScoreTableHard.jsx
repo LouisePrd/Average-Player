@@ -1,4 +1,4 @@
-
+// Scores des joueurs sous forme de tableau pour le Guesser en mode difficile
 export function ScoreTableHard({ players }) {
     return (
         <table>
