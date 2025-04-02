@@ -23,6 +23,11 @@
     transition: 0.3s;
 }
 
+.scoreboard {
+    background-color: #010A13;
+
+}
+
 .scoreboard p {
     font-family: "beaufort-pro", sans-serif;
     font-size: 1.5rem;
@@ -75,4 +80,17 @@ td, th {
 .scoreboard {
     max-height: 60vh;
     overflow-y: auto;
+}
+
+@media screen and (max-width: 768px) {
+    .scoreboard {
+        padding-bottom: 5rem;
+    }
+
+    .title-scores {
+        font-size: 1.5rem;
+        margin-top: 1rem;
+    }
+    
+    
 }

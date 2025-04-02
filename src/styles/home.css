@@ -1,6 +1,10 @@
 
 @import url("https://use.typekit.net/nde5hla.css");
 
+.home {
+    background-color: #010A13;
+}
+
 .concept {
     font-family: "beaufort-pro", sans-serif;
     display: flex;
@@ -65,4 +69,14 @@ input {
 
 #disconnect {
     margin-top: 0;
+}
+
+@media (max-width: 768px) {
+    .concept {
+        width: 90%;
+        overflow-y: auto;
+        margin-bottom: 80px;
+    }
+
+
 }
