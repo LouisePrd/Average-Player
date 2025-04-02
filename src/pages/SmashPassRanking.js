@@ -77,7 +77,7 @@ export function SmashPassRanking() {
           <li key={index}>
             <img src={champion.img} alt={champion.name} />
             {champion.name} -{" "}
-            {((champion.pass / (champion.smash + champion.pass)) * 100).toFixed(
+            {((champion.smash / (champion.smash + champion.pass)) * 100).toFixed(
               2
             )}
             %

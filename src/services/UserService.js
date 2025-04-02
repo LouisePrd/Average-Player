@@ -90,6 +90,7 @@ export const getTopSmash = async () => {
   const { data, error } = await supabase
     .from("champions")
     .select("*")
+    .gt("smash", 2)
     .order("smash", { ascending: false })
     .limit(5);
 
@@ -98,12 +99,13 @@ export const getTopSmash = async () => {
   return data || [];
 };
 
-// Requête BDD Supabase pour récupérer les 5 champions les plus passés
+// Requête BDD Supabase pour récupérer les 5 champions les plus passés si + de 3 votes
 // Page SmashOrPass
 export const getTopPass = async () => {
   const { data, error } = await supabase
     .from("champions")
     .select("*")
+    .gt("pass", 2)
     .order("pass", { ascending: false })
     .limit(5);
 
