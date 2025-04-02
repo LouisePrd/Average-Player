@@ -6,7 +6,7 @@ import {
 } from "../services/UserService";
 import "../styles/scoreboard.css";
 import { ScoreTable } from "../components/ScoreTable";
-import { ScoreTableHard } from "../components/ScoreTableHard";
+import { ScoreTableHard } from "../components/ScoreTableDifficulty";
 import { LoadingMessage } from "../components/utils/LoadingMessage";
 import { ErrorMessage } from "../components/utils/ErrorMessage";
 
