@@ -124,16 +124,6 @@
     transition: 0.3s;
 }
 
-#next {
-    font-family: "beaufort-pro", sans-serif;
-    margin-top: 2rem;
-    margin-bottom: 1rem;
-    cursor: pointer;
-    background-color: #C89B3C;
-    color: #010A13;
-    font-size: 1.3rem;
-    border-radius: 5px;
-}
 
 .champion-choice img {
     width: 200px;
